@@ -1,0 +1,26 @@
+# Logs
+logs/
+*.log
+
+# Runtime data - mirrored files
+data/uspto/*.yaml
+data/uspto/*.pdf
+data/uspto/*.html
+data/uspto/hashes.manifest
+
+# Keep the changelog
+!data/uspto/CHANGELOG.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# Temp files
+*.tmp
+*.bak

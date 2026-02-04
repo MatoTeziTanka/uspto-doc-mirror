@@ -1,0 +1,37 @@
+# USPTO Doc Mirror Sources Configuration
+# Purpose: Define upstream documentation sources for mirroring
+# Updated: 2026-02-03
+
+sources:
+  uspto:
+    name: "USPTO Open Data Portal API Documentation"
+    base_url: "https://data.uspto.gov"
+    api_base: "https://api.uspto.gov"
+    auth: "X-API-KEY header"
+    format: "openapi-yaml"
+    notes: |
+      ODP site is JS-rendered SPA. Direct page fetches return empty shells.
+      Strategy: Mirror OpenAPI/Swagger YAML specs from patent-dev/uspto-odp
+      (community-maintained, sourced from USPTO official swagger endpoint).
+      Also mirror PEDS mapping PDF and query spec PDF.
+    swagger_specs:
+      - swagger.yaml              # Main spec: Patent, Bulk, Petition (13+3+3 endpoints)
+      - odp-common-base.yaml      # Shared type definitions
+      - trial-proceedings.yaml    # PTAB trial proceedings
+      - trial-decisions.yaml      # PTAB trial decisions
+      - trial-documents.yaml      # PTAB trial documents
+      - trial-appeal-decisions.yaml  # PTAB appeal decisions
+      - trial-interferences.yaml  # PTAB interferences
+      - trial-common.yaml         # Shared PTAB types
+    docs:
+      - PEDS-to-ODP-API-Mapping.pdf  # Migration mapping from PEDS to ODP
+      - ODP-API-Query-Spec.pdf       # Query syntax specification
+    web_pages:
+      - getting-started.html         # May be JS shell
+      - api-syntax-examples.html     # May be JS shell
+    total_api_endpoints: 38
+    endpoint_groups:
+      patent_applications: 13
+      bulk_datasets: 3
+      petition_decisions: 3
+      ptab_trials: 19
